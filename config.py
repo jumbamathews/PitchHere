@@ -1,10 +1,14 @@
 import os
 
 class Config:
+
     '''
     General configuration parent class
     '''
-    pass
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://liz:\q@localhost/pitch'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+
 
 class ProdConfig(Config):
     '''
