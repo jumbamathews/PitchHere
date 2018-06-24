@@ -5,6 +5,12 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+
 class User(UserMixin,db.Model):
     
     __tablename__ = 'users'
@@ -12,11 +18,6 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
-
-
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
 
     @property
     def password(self):
@@ -47,8 +48,8 @@ class Pitch(db.Model):
     category = db.Column(db.String(255), nullable=False)
     comments = db.relationship('Comment',backref='pitch',lazy='dynamic')
 
-def __repr__(self):
-		return f'User {self.body}'
+    def __repr__(self):
+        return f'User {self.description}'
 
 
 
@@ -64,7 +65,7 @@ class Comment(db.Model):
         nullable=False)
 
 	def __repr__(self):
-		return f"Comment : id: {self.id} comment: {self.body}"
+		return f"Comment : id: {self.id} comment: {self.description}"
 
 
 
