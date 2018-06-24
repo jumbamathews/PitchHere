@@ -4,7 +4,6 @@ from flask_login import login_required, current_user
 
 # Views
 @main.route('/')
-@login_required
 def index():
 
     '''
