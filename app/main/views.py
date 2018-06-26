@@ -17,9 +17,12 @@ def index():
 
     title = 'Home'
     pickuplines = Pitch.query.filter_by(category="pickuplines")
+    interviewpitch = Pitch.query.filter_by(category = "interviewpitch")
+    promotionpitch = Pitch.query.filter_by(category = "promotionpitch")
+    productpitch = Pitch.query.filter_by(category = "productpitch")
     
 
-    return render_template('home.html', title = title,pickuplines=pickuplines )
+    return render_template('home.html', title = title,pickuplines=pickuplines, interviewpitch= interviewpitch, promotionpitch = promotionpitch, productpitch = productpitch)
     
 
 
