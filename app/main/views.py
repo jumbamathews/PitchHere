@@ -1,8 +1,10 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from flask_login import login_required, current_user
-from ..models import *
-from .forms import *
+from ..models import Pitch, User,Comment
+from .forms import PitchForm, CommentForm
+from flask.views import View,MethodView
+from .. import db
 
 
 # Views
@@ -14,29 +16,30 @@ def index():
     '''
 
     title = 'Home'
+    pickuplines = Pitch.query.filter_by(category="pickuplines")
+    
 
-    return render_template('home.html', title = title )
+    return render_template('home.html', title = title,pickuplines=pickuplines )
+    
 
 
 
-@main.route('/pitches/new/<int:id>', methods = ['GET','POST'])
+@main.route('/pitches/new/', methods = ['GET','POST'])
 @login_required
-
-def new_pitch(self, id):
-    form = PitchForm
+def new_pitch():
+    form = PitchForm()
     if form.validate_on_submit():
         description = form.description.data
-        owner = current_user._get_current_object()
+        owner_id = current_user
         category = form.category.data
-        
-        pitch = Pitch(description=form.description.data, owner=current_user._get_current_object(),category=form.category.data)
-        db.session.add(pitch)
+        print(current_user._get_current_object().id)
+        new_pitch = Pitch(owner_id =current_user._get_current_object().id,description=description,category=category)
+        db.session.add(new_pitch)
         db.session.commit()
-        return redirect(url_for('main.home'))
-    pitches = Pitch.query.order_by(Pitch.all())
-
-    return render_template('pitch.html',form=form, pitches=pitches)
-
+        
+        
+        return redirect(url_for('main.index'))
+    return render_template('pitches.html',form=form)
 
 @main.route('/pitches/pitch_categories/')
 def categories():
@@ -45,5 +48,8 @@ def categories():
     pickupline = Pitch.query.filter_by(category="pickupline pitch").all()
     interview = Pitch.query.filter_by(category="interview pitch").all()
     return render_template('home.html',pickup=pickupline,interview=interview,product=product,promotion=promotion)
+
+
+		
    
 

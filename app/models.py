@@ -18,6 +18,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     pass_secure = db.Column(db.String(255))
+    pitch = db.relationship('Pitch', backref='author', lazy='dynamic')
 
     @property
     def password(self):
@@ -38,34 +39,47 @@ class User(UserMixin,db.Model):
 class Pitch(db.Model):
     '''
     '''
-
     __tablename__ = 'pitches'
+
     id = db.Column(db.Integer, primary_key = True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
-    description = db.Column(db.Text, index = True)
+    description = db.Column(db.String(), index = True)
     downvotes = db.Column(db.Integer, default=int(0))
     upvotes = db.Column(db.Integer, default=int(0))
     category = db.Column(db.String(255), nullable=False)
     comments = db.relationship('Comment',backref='pitch',lazy='dynamic')
 
+
+    # def save_pitch(self):
+    #     db.session.add(self)
+    #     db.session.commit()
+    
+    @classmethod
+    def get_pitches(cls, id):
+        pitches = Pitch.query.order_by(pitch_id=id).desc().all()
+        return pitches
+
     def __repr__(self):
-        return f'User {self.description}'
+        return f'Pitch {self.description}'
+
+    
+
+    
+
 
 
 
 class Comment(db.Model):
-	""" This model handles the Comment model that will be mapped to the database"""
+    __tablename__='comments'
+    
+    id = db.Column(db.Integer,primary_key=True)
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'), nullable=False)
+    description = db.Column(db.Text)
+    
+    def __repr__(self):
+        return f"Comment : id: {self.id} comment: {self.description}"
 
-	__tablename__='comments'
-	id = db.Column(db.Integer,primary_key=True)
-	body = db.Column(db.Text)
-	owneer_id = db.Column(db.Integer, db.ForeignKey('users.id'),
-        nullable=False)
-	pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'),
-        nullable=False)
 
-	def __repr__(self):
-		return f"Comment : id: {self.id} comment: {self.description}"
 
 
 
