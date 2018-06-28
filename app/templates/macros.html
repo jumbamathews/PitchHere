@@ -2,7 +2,7 @@
 <div class="row">
 	{% if category_list %}
 		{% for category in category_list %}
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<div class="thumbnail text-center">
 			<h5 class="card-header">{{category.category}}</h5>
 			<div class="card-body">
@@ -10,8 +10,12 @@
 					<h2>{{category.description}}</h2>
 					<footer class="blockquote-footer"> Posted by {{category.user.username}}</footer>
 				</blockquote>
-				<a href="{{url_for('main.upvote', id = category.id)}}"><span class="badge">{{category.upvotes}}</span> Upvotes</a>
-				<p><span class="badge">{{category.downvotes}}</span>Downvotes</p>
+				<div class="section">
+						<p><span class="badge">{{category.upvotes}}</span> Upvotes</p>
+						<p><span class="badge">{{category.downvotes}}</span>Downvotes</p>
+
+				</div>
+				
 				<a href="{{url_for('main.new_comment',pitch_id = category.id)}}" class="btn btn-info"> Add a comment</a>
 				<a href="pitch/upvote" class="btn btn-primary">vote</a>
 
@@ -32,25 +36,15 @@
 <ul>
 			{% if comments %}
 			{% for comment in comments %}
-				<div class="thumbnail">
-					<a href="#">
-						<div>
-						</div>
-						<h4>{{ comment.description }}</h4>
+				<div class="thumbnail text-center">
+						<a><h3>{{ comment.description }}</h3></a>
 						<small> posted by {{comment.user.username}}</small>
-					</a>
 				</div>
 			{% endfor %}
 			{% else %}
 
-			<h3>No comments for this post!!</h3>
+			<h3>This post does  ot does not have any comments</h3>
 			{%endif%}
 
 	</ul>
-
-
-
-
-
-
 {% endmacro %}
