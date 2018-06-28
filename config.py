@@ -7,6 +7,9 @@ class Config:
     '''
     SECRET_KEY = 'powerfulsecretkey'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
 
 

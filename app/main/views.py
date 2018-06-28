@@ -5,6 +5,7 @@ from ..models import Pitch, User,Comment
 from .forms import PitchForm, CommentForm
 from flask.views import View,MethodView
 from .. import db
+import markdown2
 
 
 # Views
@@ -25,6 +26,7 @@ def index():
 
     return render_template('home.html', title = title,pitch = pitch,pickuplines=pickuplines, interviewpitch= interviewpitch, promotionpitch = promotionpitch, productpitch = productpitch)
     
+
 
 
 
