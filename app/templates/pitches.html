@@ -1,11 +1,15 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 {% extends 'bootstrap/base.html' %}
+{% include 'navbar.html'%}
+
 
 
 
 {% block content %}
-<div class="wrapper" style="margin-top:100px">
-		{{wtf.quick_form(form)}}
+<div class="container">
+	<div class="row">
+		<div class="jumbotron">
+				{{wtf.quick_form(form)}}
 		<ul style="list-style: none;">
 				{% for pitch in pitches %}
 					<div class="list-group">
@@ -19,10 +23,8 @@
 					</div>
 				{% endfor %}
 		</ul>
-
-
-	
-
+		</div>
+	</div>
 </div>
 	
 	
