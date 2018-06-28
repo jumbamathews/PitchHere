@@ -1,3 +1,5 @@
+{% include 'navbar.html'%}
+
 
 {% import 'bootstrap/wtf.html' as wtf %}
 {% extends 'bootstrap/base.html' %}
@@ -5,14 +7,25 @@
 
 
 {% block content %}
-<div class="wrapper" style="margin-top:100px">
-        {{wtf.quick_form(form)}}
-        
+<div class="container">
+        <div class="row">
+                <div class="jumbotron">
+                                {{wtf.quick_form(form)}}
+                                {{simplemde.load}}
+                </div>
+        </div>
 </div>
+        
+        
 <div class="row">
-        {{ macro.displayComment(comment) }}
+        <div class="container">
+                <div class="col-md-12" style="background-color: #5bc0de">
+                                {{ macro.displayComment(comment) }}
 
-
+                </div>
+                 
+        </div>
+        
 </div>
 	
 	
