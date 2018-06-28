@@ -61,7 +61,6 @@ def new_comment(pitch_id):
         new_comment = Comment(description = description, user_id = current_user._get_current_object().id, pitch_id = pitch_id)
         db.session.add(new_comment)
         db.session.commit()
-        flash('your comment has been added', 'hurray')
 
 
         return redirect(url_for('.new_comment', pitch_id= pitch_id))
