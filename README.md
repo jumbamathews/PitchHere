@@ -2,7 +2,7 @@
 
 
 # Author
-Wanjiru Nganga
+  **[Wanjiiru](https://github.com/wanjiiru)**
 
 ## Description
   This is an application that allows a user to create a pitch depending on a certain c
@@ -60,7 +60,10 @@ Wanjiru Nganga
 
 ## Technologies Used
   * Python 3.6.5
-  * HTML5
+  * HTML5, CSS and Bootstrap
+  * Flask Framework
+  * Postgressql
+  * Heroku
 
 ## Known Bugs
 No known bugs at the moment
