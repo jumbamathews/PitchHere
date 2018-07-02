@@ -1,12 +1,14 @@
-# Pitch
+# PitchHere
+## A web application that lets users submit pitches based on different categories
+### June 22nd, 2018
 
 
 # Author
   **[Wanjiiru](https://github.com/wanjiiru)**
 
 ## Description
-  This is an application that allows a user to create a pitch depending on a certain c
-  and add pitch content. A user can also be able to comment and vote on another users pitches.
+  This is an application that allows a user to create a pitch depending on a certain category
+  and add pitch content. A user can also be able to comment and vote on another user's pitches.
 
 ## Installation Requirements
   Clone this repository and navigate to the folder.
