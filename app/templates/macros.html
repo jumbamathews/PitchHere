@@ -4,26 +4,23 @@
 		{% for category in category_list %}
 		<div class="col-md-6">
 			<div class="thumbnail text-center">
+			<h5 class="card-header">{{category.title}}</h5>
 			<h5 class="card-header">{{category.category}}</h5>
 			<div class="card-body">
 				<blockquote class="blockquote mb-0">
 					<h2>{{category.description}}</h2>
 					<footer class="blockquote-footer"> Posted by {{category.user.username}}</footer>
 				</blockquote>
-				<div class="section">
-						<p><span class="badge">{{category.upvotes}}</span> Upvotes</p>
-						<p><span class="badge">{{category.downvotes}}</span>Downvotes</p>
-
-				</div>
 				
 				<a href="{{url_for('main.new_comment',pitch_id = category.id)}}" class="btn btn-info"> Add a comment</a>
-				<a href="pitch/upvote" class="btn btn-primary">vote</a>
+				<a href="{{url_for('main.upvote',pitch_id = category.id)}}" class= "btn btn-primary btn-sm"><i></i>Upvote <span>{{category.upvotes.count()}}</span></a>
+				<a href="{{url_for('main.downvote',pitch_id = category.id)}}" class= "btn btn-danger btn-sm"><i class="far fa-thumbs-up"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
+
 
 			</div>
 		</div>
 
 		</div>
-		
 		{% endfor %}
 	{% else %}
 	{% endif %}
@@ -34,17 +31,22 @@
 
 {% macro displayComment(comments) %}
 <ul>
+
 			{% if comments %}
 			{% for comment in comments %}
-				<div class="thumbnail text-center">
-						<a><h3>{{ comment.description }}</h3></a>
+				<div class="row text-center">
+						<a><p style="color: brown">{{ comment.description }}</p></a>
 						<small> posted by {{comment.user.username}}</small>
 				</div>
 			{% endfor %}
 			{% else %}
 
-			<h3>This post does  ot does not have any comments</h3>
+			<h3>This post does  not does not have any comments yet !</h3>
 			{%endif%}
 
 	</ul>
+	
+			
+
+
 {% endmacro %}
