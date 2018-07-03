@@ -6,6 +6,11 @@
 # Author
   **[Wanjiiru](https://github.com/wanjiiru)**
 
+
+## Link to Live Site 
+
+
+
 ## Description
   This is an application that allows a user to create a pitch depending on a certain category
   and add pitch content. A user can also be able to comment and vote on another user's pitches.
@@ -68,7 +73,7 @@
   * Heroku
 
 ## Known Bugs
-No known bugs at the moment
+No known bugs so far
 
 ## Support Details
 Contact me for further help
