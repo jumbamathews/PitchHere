@@ -1,5 +1,5 @@
-export DATABASE_URL='postgres://djrlzmirlqyozz:225c4190ab3e169401c0066986eebf3d033f9924c04a76202cad869ededac866@ec2-54-235-220-220.compute-1.amazonaws.com:5432/d24vkpns1uaqp9'
+export DATABASE_URL='postgres://xkoszvcfcdlkrk:9d454a4207418f7d6084c0af1fa0c93a32656ec9783bef5ec6c86212ba57132a@ec2-54-235-240-126.compute-1.amazonaws.com:5432/d18732jk577r6a'
 
-export SECRET_KEY = 'powerfulsecretkey'
+export SECRET_KEY='powerfulsecretkey'
 
 python3.6 manage.py server
